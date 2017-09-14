@@ -1,6 +1,12 @@
 version: '0.1'
 services:
+  db:
+    image: postgres
+    # Para evitar conflictos con el puerto en local si ya hay postgres
+    ports:
+      - "5433:5432"
   odoo10:
+    container_name: praxya_odoo_10
     image: "praxya/odoo10"
     ports: 
       - "8069:8069"
