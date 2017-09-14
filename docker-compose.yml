@@ -1,5 +1,6 @@
 version: '0.1'
 services:
   odoo10:
-    image: "praxya/odoo10:latest"
-    ports: "8069:8069"
+    image: "praxya/odoo10"
+    ports: 
+      - "8069:8069"
