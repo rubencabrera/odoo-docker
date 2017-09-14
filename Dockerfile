@@ -7,6 +7,7 @@ EXPOSE 8072
 
 RUN apt-get update && apt-get install 
         wget \
+        net-tools \
         git \
         xauth \
         python-pip \
