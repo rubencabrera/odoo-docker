@@ -220,6 +220,6 @@ RUN echo 'longpolling_port = '${LONGPOLLING_PORT:-8072} >> /opt/config/odoo-serv
     echo 'xmlrpc_port = '${XMLRPC_PORT:-8069} >> /opt/config/odoo-server.conf; \
     echo 'xmlrpcs = '${XMLRPCS:-True} >> /opt/config/odoo-server.conf; \
     echo 'xmlrpcs_port = '${XMLRPCS_PORT:-8071} >> /opt/config/odoo-server.conf; \
-    echo 'db_host = '${DB_HOST:-db}} >> /opt/config/odoo-server.conf; 
+    echo 'db_host = '${DB_HOST:-db} >> /opt/config/odoo-server.conf; 
 
 ENTRYPOINT /opt/odoo/odoo-bin --config=/opt/config/odoo-server.conf
