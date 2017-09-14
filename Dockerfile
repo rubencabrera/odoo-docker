@@ -5,7 +5,7 @@ EXPOSE 8069
 # Prueba por si acaso la 10 sólo va en el longpolling
 EXPOSE 8072
 
-RUN apt-get update && apt-get install 
+RUN apt-get update && apt-get install \
         wget \
         net-tools \
         git \
