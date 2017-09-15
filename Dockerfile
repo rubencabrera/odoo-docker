@@ -1,9 +1,8 @@
 # DOCKER para odoo 10 de Odoo Community Backports
 FROM ubuntu:16.04
 MAINTAINER Rubén Cabrera Martínez <rcabrera@praxya.com>
-EXPOSE 8069 8071
+EXPOSE 8069 8071 8072
 # Prueba por si acaso la 10 sólo va en el longpolling
-EXPOSE 8072
 
 RUN apt-get update && apt-get install \
         wget \
@@ -90,8 +89,8 @@ WORKDIR /opt/odoo
 RUN git clone --branch 10.0 --depth 1 https://github.com/oca/ocb.git /opt/odoo
 
 # Aquí van los repos oca
-RUN mkdir /opt/odoo/oca
-WORKDIR /opt/odoo/oca
+RUN mkdir /opt/repos/oca
+WORKDIR /opt/repos/oca
 RUN git clone --branch 10.0 --depth 1 https://github.com/oca/stock-logistics-workflow.git; \
     git clone --branch 10.0 --depth 1 https://github.com/oca/account-financial-reporting.git; \
     git clone --branch 10.0 --depth 1 https://github.com/oca/server-tools.git; \

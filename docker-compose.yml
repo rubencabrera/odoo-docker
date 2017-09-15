@@ -2,9 +2,14 @@ version: '3'
 services:
   db:
     image: postgres
+    environment:
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
     # Para evitar conflictos con el puerto en local si ya hay postgres
     ports:
       - "5433:5432"
+    volumes:
+      - data_storage:/var/lib/postgresql/data
   odoo10:
     container_name: praxya_odoo_10
     depends_on:
@@ -12,3 +17,10 @@ services:
     image: "praxya/odoo10"
     ports: 
       - "8069:8069"
+      - "8071:8071"
+      - "8072:8072"
+    volumes:
+      - odoo_data:/var/lib/odoo
+volumes:
+  data_storage:
+  odoo_data:
