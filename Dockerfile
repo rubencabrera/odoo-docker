@@ -1,7 +1,7 @@
 # DOCKER para odoo 10 de Odoo Community Backports
 FROM ubuntu:16.04
 MAINTAINER Rubén Cabrera Martínez <rcabrera@praxya.com>
-EXPOSE 8069
+EXPOSE 8069 8071
 # Prueba por si acaso la 10 sólo va en el longpolling
 EXPOSE 8072
 
@@ -152,6 +152,12 @@ USER root
 RUN mkdir /opt/config
 ADD odoo-server.conf /opt/config/odoo-server.conf
 RUN chown -R odoo:odoo /opt/config
+# Extra-addons is where odoo10 places user installed addons
+#RUN mkdir -p /mnt/extra-addons \
+        #&& chown -R odoo /mnt/extra-addons
+RUN mkdir -p /var/lib/odoo \
+        && chown -R odoo /var/lib/odoo
+VOLUME ["/var/lib/odoo"]
 
 USER odoo
 # Metemos el fichero de configuración sin los valores a pasar como
@@ -165,7 +171,8 @@ USER odoo
 RUN echo 'db_user = '${ODOO_DB_USER:-odoo} >> /opt/config/odoo-server.conf; \
     echo 'log_handler = '${LOG_HANDLER:-"[':INFO']"} >> /opt/config/odoo-server.conf; \
     echo 'log_level = '${LOG_LEVEL:-info} >> /opt/config/odoo-server.conf; \
-    echo 'log_db = '${LOG_DB:-False} >> /opt/config/odoo-server.conf
+    echo 'log_db = '${LOG_DB:-False} >> /opt/config/odoo-server.conf \
+    echo 'data_dir = '${DATA_DIR:-"/var/lib/odoo"} >> /opt/config/odoo-server.conf
 # TODO: Crear un volumen para tener logs persistentes (!)
 # La variable auto_reload no se está metiendo.
 RUN echo 'logfile = '${LOGFILE:-"/var/log/odoo/odoo-server.log"} >> /opt/config/odoo-server.conf; \
