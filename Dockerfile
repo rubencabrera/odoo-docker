@@ -60,6 +60,8 @@ RUN apt-get update && apt-get install \
         python-babel \
         python-zsi \
         python-pypdf2 \
+        node-clean-css \
+        node-less \
         -y
 
 # Pone trusty pero estamos usando la imagen de xenial
@@ -78,9 +80,10 @@ RUN pip install \
         cssutils \
         backports.functools_lru_cache \
         dbfpy
-RUN mkdir /opt/odoo; mkdir /var/log/odoo; mkdir /var/lib/odoo
+RUN mkdir /opt/odoo; mkdir /var/log/odoo; mkdir /var/lib/odoo; mkdir /opt/repos && mkdir /opt/repos/oca
 RUN useradd --home /opt/odoo --shell /bin/bash odoo
-RUN chown -R odoo:odoo /opt/odoo; chown -R odoo:odoo /var/lib/odoo; chown -R odoo:odoo /var/log/odoo
+RUN chown -R odoo:odoo /opt/odoo; chown -R odoo:odoo /var/lib/odoo; \
+    chown -R odoo:odoo /var/log/odoo; chown -R odoo:odoo /opt/repos
 
 # Con lo siguiente, cambiamos al usuario odoo y el path donde ejecuta los
 # comandos que se indiquen después.
@@ -89,7 +92,6 @@ WORKDIR /opt/odoo
 RUN git clone --branch 10.0 --depth 1 https://github.com/oca/ocb.git /opt/odoo
 
 # Aquí van los repos oca
-RUN mkdir /opt/repos/oca
 WORKDIR /opt/repos/oca
 RUN git clone --branch 10.0 --depth 1 https://github.com/oca/stock-logistics-workflow.git; \
     git clone --branch 10.0 --depth 1 https://github.com/oca/account-financial-reporting.git; \
@@ -170,7 +172,7 @@ USER odoo
 RUN echo 'db_user = '${ODOO_DB_USER:-odoo} >> /opt/config/odoo-server.conf; \
     echo 'log_handler = '${LOG_HANDLER:-"[':INFO']"} >> /opt/config/odoo-server.conf; \
     echo 'log_level = '${LOG_LEVEL:-info} >> /opt/config/odoo-server.conf; \
-    echo 'log_db = '${LOG_DB:-False} >> /opt/config/odoo-server.conf \
+    echo 'log_db = '${LOG_DB:-False} >> /opt/config/odoo-server.conf; \
     echo 'data_dir = '${DATA_DIR:-"/var/lib/odoo"} >> /opt/config/odoo-server.conf
 # TODO: Crear un volumen para tener logs persistentes (!)
 # La variable auto_reload no se está metiendo.
