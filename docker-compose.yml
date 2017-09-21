@@ -1,3 +1,7 @@
+# Se necesita docker y docker-compose. Ejecutar con:
+# docker-compose -f docker-compose.yml up
+# Se iniciará un contenedor con postgresql y otro con odoo. 
+---
 version: '3'
 services:
   db:
@@ -11,10 +15,10 @@ services:
     volumes:
       - data_storage:/var/lib/postgresql/data
   odoo10:
-    container_name: praxya_odoo_10
+    container_name: praxya_odoo10
     depends_on:
       - db
-    image: "praxya/odoo10"
+    image: "praxya/odoo:10.0.0.1"
     ports: 
       - "8069:8069"
       - "8071:8071"
