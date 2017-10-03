@@ -1,15 +1,16 @@
 # Se necesita docker y docker-compose. Ejecutar con:
 # docker-compose -f docker-compose.yml up
 # Se iniciará un contenedor con postgresql y otro con odoo. 
+# Para evitar conflictos con el puerto en local si ya hay postgres
+# se usa el 5433 en lugar del estándar 5432 de postgresql.
 ---
-version: '3'
+version: '3.1'
 services:
   db:
     image: postgres
     environment:
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
-    # Para evitar conflictos con el puerto en local si ya hay postgres
     ports:
       - "5433:5432"
     volumes:
