@@ -1,0 +1,16 @@
+[Unit]
+Description=Odoo Community Backports Server
+After=network.target
+
+[Service]
+Type=simple
+PermissionsStartOnly=true
+SyslogIdentifier=odoo-server
+User=odoo
+Group=odoo
+ExecStart=/opt/odoo/odoo-bin --config=/opt/config/odoo-server.conf
+WorkingDirectory=/opt/odoo/
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target
