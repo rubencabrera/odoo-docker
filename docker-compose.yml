@@ -19,7 +19,7 @@ services:
     container_name: praxya_odoo10
     depends_on:
       - db
-    image: "praxya/odoo:10.0.0.1"
+    image: "praxya/odoo:10"
     ports: 
       - "8069:8069"
       - "8071:8071"
