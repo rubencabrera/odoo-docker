@@ -1,74 +1,78 @@
-# DOCKER para odoo 10 de Odoo Community Backports
-FROM ubuntu:16.04
+# DOCKER para odoo 12 de Odoo Community Backports
+FROM debian:stretch
 MAINTAINER Rubén Cabrera Martínez <rcabrera@praxya.com>
 EXPOSE 8069 8071 8072
-# Prueba por si acaso la 10 sólo va en el longpolling
-RUN apt-get update && apt-get install software-properties-common \
-	wget \
-	-y
 
-RUN add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt xenial-pgdg main" -y; \
+# Prueba por si acaso la 10 sólo va en el longpolling
+RUN apt-get update \
+    && apt-get install \
+      software-properties-common \
+      wget \
+      -y
+
+RUN add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main" -y; \
     wget --quiet -O - https://postgresql.org/media/keys/ACCC4CF8.asc | \
     apt-key add -
 
 RUN apt-get update && apt-get install \
-        net-tools \
         git \
-        xauth \
-        python-pip \
-        python-cups \
-        python-jinja2 \
-        python-unicodecsv \
-        python-psycopg2 \
-        python-simplejson \
-        python-lxml \
-        python-imaging \
-        python-yaml \
-        python-reportlab \
-        python-mako \
-        python-werkzeug \
-        python-dateutil \
-        python-unittest2 \
-        python-mock \
-        python-openid \
-        python-docutils \
-        python-feedparser \
-        python-psutil \
-        python-pydot \
-        python-vatnumber \
-        python-vobject \
-        python-xlwt \
-        python-ldap \
-        python-requests \
-        python-decorator \
-        python-passlib \
-        python-babel \
-        python-gevent \
         locales \
-        python-webdav \
-        python-gdata \
-        xfonts-75dpi \
-        python-apt \
-        xfonts-base \
-        python-pyparsing \
-        xfonts-utils \
-        python-dev \
-        python-libxslt1 \
-        python-psycopg2 \
-        python-geoip \
-        python-pybabel \
-        python-pyinotify \
-        python-tz \
-        python-pychart \
-        python-openssl \
-        python-egenix-mxdatetime \
-        python-pypdf \
-        python-babel \
-        python-zsi \
-	postgresql-client-9.6 \
-        python-pypdf2 \
+        net-tools \
         node-clean-css \
         node-less \
+	postgresql-client-9.6 \
+        python3-apt \
+        python3-babel \
+        python3-cups \
+        python3-dateutil \
+        python3-decorator \
+        python3-dev \
+        python3-docutils \
+        python3-egenix-mxdatetime \
+        python3-feedparser \
+        python3-gdata \
+        python3-gevent \
+        python3-geoip \
+        python3-imaging \
+        python3-jinja2 \
+        python3-libxslt1 \
+        python3-lxml \
+        python3-mako \
+        python3-mock \
+        python3-openid \
+        python3-openssl \
+        python3-passlib \
+        python3-pip \
+        python3-psutil \
+        python3-psycopg2 \
+        python3-pybabel \
+        python3-pychart \
+        python3-pydot \
+        python3-pyinotify \
+        python3-pyldap \
+        python3-pyparsing \
+        python3-pypdf \
+        python3-pypdf2 \
+        python3-qrcode \
+        python3-renderpm \
+        python3-reportlab \
+        python3-requests \
+        python3-simplejson \
+        python3-tz \
+        python3-unicodecsv \
+        python3-unittest2 \
+        python3-vatnumber \
+        python3-vobject \
+        python3-watchdog \
+        python3-webdav \
+        python3-werkzeug \
+        python3-xlwt \
+        python3-yaml \
+        python3-zsi \
+        xauth \
+        xfonts-75dpi \
+        xfonts-base \
+        xfonts-utils \
         -y
 
 # Pone trusty pero estamos usando la imagen de xenial
@@ -78,6 +82,7 @@ RUN dpkg -i wkhtmltox-0.12.1_linux-trusty-amd64.deb
 
 # TODO:
 # Instalar locale aquí
+ENV LANG C.UTF-8
 
 RUN pip install \
         openupgradelib \
