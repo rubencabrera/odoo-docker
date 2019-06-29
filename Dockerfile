@@ -2,13 +2,15 @@
 FROM debian:stretch
 MAINTAINER Rubén Cabrera Martínez <rcabrera@praxya.com>
 EXPOSE 8069 8071 8072
+ENV LANG C.UTF-8
 
 # Prueba por si acaso la 10 sólo va en el longpolling
 RUN apt-get update \
     && apt-get install \
-      software-properties-common \
-      wget \
-      -y
+    software-properties-common \
+    wget \
+    gnupg2 \
+    -y
 
 RUN add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main" -y; \
     wget --quiet -O - https://postgresql.org/media/keys/ACCC4CF8.asc | \
@@ -82,7 +84,6 @@ RUN dpkg -i wkhtmltox-0.12.1_linux-trusty-amd64.deb
 
 # TODO:
 # Instalar locale aquí
-ENV LANG C.UTF-8
 
 RUN pip install \
         openupgradelib \
