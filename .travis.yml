@@ -9,5 +9,5 @@ services:
 - docker
 script:
 - docker build -t "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" .
-deploy:
+after_success:
   - docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD && docker push "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}";
