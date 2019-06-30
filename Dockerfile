@@ -92,6 +92,7 @@ RUN pip3 install \
         cssutils \
         dbfpy \
         html2text \
+        libsass \
 	odoorpc \
 	ofxparse \
         openupgradelib \
