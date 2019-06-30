@@ -88,20 +88,21 @@ RUN wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkh
 RUN dpkg -i wkhtmltox_0.12.5-1.stretch_amd64.deb
 
 RUN pip3 install \
-        openupgradelib \
-	odoorpc \
-        unidecode \
-	zeep \
-	pandas \
-        psycogreen \
-        xlrd \
-	ofxparse \
-        cssutils \
-	twilio \
-	zklib \
         backports.functools_lru_cache \
 	bokeh \
-        dbfpy
+        cssutils \
+        dbfpy \
+        html2text \
+	odoorpc \
+	ofxparse \
+        openupgradelib \
+	pandas \
+        psycogreen \
+	twilio \
+        unidecode \
+        xlrd \
+	zeep \
+	zklib
 RUN mkdir /opt/odoo; mkdir /var/log/odoo; mkdir /var/lib/odoo; mkdir /opt/repos && mkdir /opt/repos/oca
 RUN useradd --home /opt/odoo --shell /bin/bash odoo
 RUN chown -R odoo:odoo /opt/odoo; chown -R odoo:odoo /var/lib/odoo; \
