@@ -16,10 +16,22 @@ RUN add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgd
     wget --quiet -O - https://postgresql.org/media/keys/ACCC4CF8.asc | \
     apt-key add -
 
+# Removed because couldn't find candidates for stretch:
+        #libjpeg-turbo8 \
+        #python3-egenix-mxdatetime \
+        #python3-gdata \
+        #python3-imaging \
+        #python3-libxslt1 \
+        #python3-pybabel \
+        #python3-pychart \
+        #python3-pypdf \
+        #python3-webdav \
+        #python3-xlwt \
+        #python3-zsi \
+
 RUN apt-get update && apt-get install \
         git \
         libssl1.0-dev \
-        #libjpeg-turbo8 \
         locales \
         net-tools \
         node-clean-css \
@@ -32,14 +44,10 @@ RUN apt-get update && apt-get install \
         python3-decorator \
         python3-dev \
         python3-docutils \
-        #python3-egenix-mxdatetime \
         python3-feedparser \
-        #python3-gdata \
         python3-gevent \
         python3-geoip \
-        #python3-imaging \
         python3-jinja2 \
-        #python3-libxslt1 \
         python3-lxml \
         python3-mako \
         python3-mock \
@@ -49,13 +57,10 @@ RUN apt-get update && apt-get install \
         python3-pip \
         python3-psutil \
         python3-psycopg2 \
-        #python3-pybabel \
-        #python3-pychart \
         python3-pydot \
         python3-pyinotify \
         python3-pyldap \
         python3-pyparsing \
-        #python3-pypdf \
         python3-pypdf2 \
         python3-qrcode \
         python3-renderpm \
@@ -68,11 +73,8 @@ RUN apt-get update && apt-get install \
         python3-vatnumber \
         python3-vobject \
         python3-watchdog \
-        #python3-webdav \
         python3-werkzeug \
-        #python3-xlwt \
         python3-yaml \
-        #python3-zsi \
         xauth \
         xfonts-75dpi \
         xfonts-base \
