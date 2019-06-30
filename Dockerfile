@@ -4,7 +4,6 @@ MAINTAINER Rubén Cabrera Martínez <rcabrera@praxya.com>
 EXPOSE 8069 8071 8072
 ENV LANG C.UTF-8
 
-# Prueba por si acaso la 10 sólo va en el longpolling
 RUN apt-get update \
     && apt-get install \
     software-properties-common \
@@ -186,7 +185,8 @@ RUN sed -i '/^#.*Storage/s/^#//' /etc/systemd/journald.conf
 # Mount /var/lib/odoo to allow restoring filestore and /mnt/extra-addons
 # for users addons
 RUN mkdir -p /mnt/extra-addons \
-        && chown -R odoo /mnt/extra-addons
+    && chown -R odoo:odoo /mnt/extra-addons \
+    && chown -R odoo:odoo /var/lib/odoo
 VOLUME ["/var/lib/odoo", "/mnt/extra-addons"]
 
 COPY ./entrypoint.sh /opt/entrypoint.sh
