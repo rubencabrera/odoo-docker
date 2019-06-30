@@ -1,8 +1,7 @@
-language: python
-python:
-- "3.6"
+language: bash
+os: linux
 sudo: required
 services:
 - docker
-install:
+script:
   - docker build -t "${TRAVIS_REPO_SLUG}" .
