@@ -179,13 +179,16 @@ COPY ./odoo-server.conf /opt/config/odoo-server.conf
 ENV OPENERP_SERVER /opt/config/odoo-server.conf
 
 RUN chown -R odoo:odoo /opt/config
-# Extra-addons is where odoo10 places user installed addons
-#RUN mkdir -p /mnt/extra-addons \
-        #&& chown -R odoo /mnt/extra-addons
 RUN sed -i '/^#.*Storage/s/^#//' /etc/systemd/journald.conf
-RUN mkdir -p /var/lib/odoo \
-        && chown -R odoo /var/lib/odoo
-VOLUME ["/var/lib/odoo"]
+#RUN mkdir -p /var/lib/odoo \
+    #&& chown -R odoo /var/lib/odoo
+#VOLUME ["/var/lib/odoo"]
+# Mount /var/lib/odoo to allow restoring filestore and /mnt/extra-addons
+# for users addons
+RUN mkdir -p /mnt/extra-addons \
+        && chown -R odoo /mnt/extra-addons
+VOLUME ["/var/lib/odoo", "/mnt/extra-addons"]
+
 COPY ./entrypoint.sh /opt/entrypoint.sh
 RUN chown -R odoo:odoo /opt/entrypoint.sh
 RUN ["chmod", "+x", "/opt/entrypoint.sh"]
