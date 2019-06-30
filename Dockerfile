@@ -96,6 +96,7 @@ RUN pip3 install \
 	odoorpc \
 	ofxparse \
         openupgradelib \
+        num2words \
 	pandas \
         psycogreen \
 	twilio \
