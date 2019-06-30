@@ -8,9 +8,7 @@ env:
 services:
 - docker
 script:
-- docker build -t "${TRAVIS_REPO_SLUG}" .
+- docker build -t "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" .
 after_success:
-  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
-      docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD ;
-      make push-image ;
-    fi
+  - docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD ;
+    docker push "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}";
