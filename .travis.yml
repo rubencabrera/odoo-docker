@@ -1,7 +1,17 @@
 language: bash
 os: linux
 sudo: required
+env:
+  global:
+  - secure: TDAVU5ZV+gR6SfUFTHay+l7/EY6La2HfPfA4lV5pyn+B1xdufLBnzxK89OGyxFDjNUUwsvwmA1iKRODj23Qktd38Ixt+JxfBmPoJkgE7qdDxFKS2KSPsKT/dYqyI8Z/Ja0xi45HItoRlIO7VoyaPI4QkaWH9PdG1SZe7rPUbAhfi703pt74gJwOUwXAPT+ltmgRW3X9D3NH4UwcLDZdc24p0muQfa5+3Tyo0BwpPDZq3XyaUmaanHVdNqOcrEtWVdst6HyyyV458MMc58mH0UE/NcZgGWjHV7GXjMl9OXINA0+nV//jOkhSmrWSPXAhOPdlmNNg9bWFuIwI7UzVWQ+tUEfzDj1xamXniRECVwuD7/oU+wAswHcWj2/p5iUQ4aMf6pfxe/ECgvMC8HdzXzafwEJ9cIYsH32REq203eNNL6E/Gk7i5iY75f4XcAjMwop0X6khqg1V3APkPrOnt5uOvz5dmykMS306OKe6ZcO0XiNuM6Gn4yVtfZ59wLxTCJn6PJpEHQB20DNI4NN/Y528ESqRDrHOKl8rJuPRbTspfjxB7HrmL3EW5ynZ+IL2WDfC9e+S1+1jtgylEF1swCgpqg+qpfHpZLdwKZysLg+p3buVBAMDhWG5icF7V3cR6ACsjFNXbl98jk20EfLdO4bO1aJJz2OcVMYf5BuU8ZsE=
+  - secure: o235uaW/z0gHhXFI46MeMpfsjVoVJTClm3N7X8Fcv3qfHC4euxNWvRSkOrh11ZqC6tHjH3LLb5IV4HmGiPShjCcSXuxlOiTQeVciNihsjLybule6kmypO8TJWuJPi3DHVBr/naUBnIyUzA2vDedJ0Va3pzSU+ZyAv8izR7GQ/HAEBnri48JKP08bMkYONp5EDyHA5tTqTPJYKBhZsi8pdcFl7Ob5t6OWZuM1UMWyuDMgzVhUVnq53Ont5qFMVzgu+icGtrFIP6eEjI7zVUTpNTqvVaoesy7peY3gBm55401onypQd2KJNd4gyAiuv3kQtEyoL4ln0GvoaDl93Pi8hu4XKRX2HALI+jJi5j4HwmMSaVYas5O2O7HVGXDuHyhFw6t18hsYaiL0Ol9FF/k7g4ufTKBfszvLIVmQVRKrq7xULYDrlwf7I5r/B15WUqgKumdktsp82y7NHuhf89eY40t2R6G5QeqojfabPXxprnZpHAISbxFgoNQGQmswW5D7YxMJnX7HAUR2fxgyvq5THGDwhh47vRdemgzIK+VMAEwip1NTF42Sl2Y9Uyx2Vs6gAAzPPyf7gwTJQjc3OiyaY93Mea/O/hllLKLAezQBQTBzzsVUdflNrXgjKf/uGDwh0ZJhhaKsDmT+pf7o4R8hddHv6numhSClLG087Kdm5AI=
 services:
 - docker
 script:
-  - docker build -t "${TRAVIS_REPO_SLUG}" .
+- docker build -t "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" .
+deploy:
+  provider: script
+  script: ./.travis/docker_push.bash
+  on:
+    tags: true
+    branch: 12

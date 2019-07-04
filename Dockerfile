@@ -4,7 +4,6 @@ MAINTAINER Rubén Cabrera Martínez <rcabrera@praxya.com>
 EXPOSE 8069 8071 8072
 ENV LANG C.UTF-8
 
-# Prueba por si acaso la 10 sólo va en el longpolling
 RUN apt-get update \
     && apt-get install \
     software-properties-common \
@@ -88,20 +87,23 @@ RUN wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkh
 RUN dpkg -i wkhtmltox_0.12.5-1.stretch_amd64.deb
 
 RUN pip3 install \
-        openupgradelib \
-	odoorpc \
-        unidecode \
-	zeep \
-	pandas \
-        psycogreen \
-        xlrd \
-	ofxparse \
-        cssutils \
-	twilio \
-	zklib \
         backports.functools_lru_cache \
 	bokeh \
-        dbfpy
+        cssutils \
+        dbfpy \
+        html2text \
+        libsass \
+	odoorpc \
+	ofxparse \
+        openupgradelib \
+        num2words \
+	pandas \
+        psycogreen \
+	twilio \
+        unidecode \
+        xlrd \
+	zeep \
+	zklib
 RUN mkdir /opt/odoo; mkdir /var/log/odoo; mkdir /var/lib/odoo; mkdir /opt/repos && mkdir /opt/repos/oca
 RUN useradd --home /opt/odoo --shell /bin/bash odoo
 RUN chown -R odoo:odoo /opt/odoo; chown -R odoo:odoo /var/lib/odoo; \
@@ -177,13 +179,17 @@ COPY ./odoo-server.conf /opt/config/odoo-server.conf
 ENV OPENERP_SERVER /opt/config/odoo-server.conf
 
 RUN chown -R odoo:odoo /opt/config
-# Extra-addons is where odoo10 places user installed addons
-#RUN mkdir -p /mnt/extra-addons \
-        #&& chown -R odoo /mnt/extra-addons
 RUN sed -i '/^#.*Storage/s/^#//' /etc/systemd/journald.conf
-RUN mkdir -p /var/lib/odoo \
-        && chown -R odoo /var/lib/odoo
-VOLUME ["/var/lib/odoo"]
+#RUN mkdir -p /var/lib/odoo \
+    #&& chown -R odoo /var/lib/odoo
+#VOLUME ["/var/lib/odoo"]
+# Mount /var/lib/odoo to allow restoring filestore and /mnt/extra-addons
+# for users addons
+RUN mkdir -p /mnt/extra-addons \
+    && chown -R odoo:odoo /mnt/extra-addons \
+    && chown -R odoo:odoo /var/lib/odoo
+VOLUME ["/var/lib/odoo", "/mnt/extra-addons"]
+
 COPY ./entrypoint.sh /opt/entrypoint.sh
 RUN chown -R odoo:odoo /opt/entrypoint.sh
 RUN ["chmod", "+x", "/opt/entrypoint.sh"]
