@@ -7,7 +7,7 @@
 version: '3.1'
 services:
   db:
-    image: postgres:9.6
+    image: postgres:9.6.5
     environment:
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
@@ -20,12 +20,22 @@ services:
     depends_on:
       - db
     image: "rubencabrera/odoo-docker:12.0.4"
-    ports: 
-      - "8069:8069"
-      - "8071:8071"
-      - "8072:8072"
+    ports:
+      - "8169:8069"
+      - "8171:8071"
+      - "8172:8072"
+    environment:
+      - ADMIN_PASSWD=FIXME
+      - DB_FILTER=False
     volumes:
-      - odoo_data:/var/lib/odoo
+      - odoo12_data:/var/lib/odoo
+      - codigo:/opt
 volumes:
   data_storage:
-  odoo_data:
+  odoo12_data:
+  codigo:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /opt/odoo-docker/opt    # This is where the code will live.
