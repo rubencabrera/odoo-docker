@@ -11,8 +11,8 @@ script:
 - docker build -t "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" .
 deploy:
   provider: script
+  skip_cleanup: true
   script: ./.travis/docker_push.bash
   on:
     tags: true
-    skip_cleanup: true
     branch: 12
