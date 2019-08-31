@@ -5,13 +5,27 @@ many are specific to local regulations and contradict themselves.
 
 For localisation, I am currently using Spain. If deemed useful, new
 branches and tags for images could be created for other countries,
-[open an issue](https://github.com/rubencabrera/odoo-docker/issues/new) if you need that, it's an easy win but I haven't 
+[open an issue][issue-link] if you need that, it's an easy win but I haven't 
 had to do it. 
 
-# Environment variables
+# Usage
+
+## Requirements
+
+You will need Docker and docker compose ([install docs][compose-install]).
+
+This repo includes docker compose files you can use to run Odoo completely
+on containers, mounting volumes for persistent data.
+
+Regarding resources, will vary heavily depending on the number of users and
+data, but a bare minimum with not much guarantees will be 1GB of RAM. It will
+be uch better with something above 4GB. 
+
+
+## Environment variables
 
 Odoo uses a config file that is a bit of a pain with a docker 
-container. This images allows you to pass those config values in
+container. This images allow you to pass those config values in
 environment variables. Here's a list of the available ones, you can
 find them documented in the official Odoo documentation with the
 same name in lower case:
@@ -73,3 +87,25 @@ same name in lower case:
 | `XMLRPC_PORT` | `8069` |
 | `XMLRPCS` | `True` |
 | `XMLRPCS_PORT` | `8071` |
+
+
+# Getting help
+
+If you need help of have questions, [open an issue][issue-link] or get in
+contact. Please bear in mind this is not my current job and this image is
+working well enough for my needs, so I haven't alloted time to maintain it,
+but I'll do my best to help, especially if it's affecting your product. 
+
+
+# Ayuda en español
+
+Si necesitas ayuda en español usando esta imagen de Odoo o con algún tema
+relacionado, [abre un Issue][issue-link] o ponte en contacto conmigo.
+
+Por favor, ten en cuenta que este no es mi trabajo actualmente y que esta
+imagen funciona lo bastante bien como para no requerir mi tiempo, puede que
+tarde más de lo que esperas si tu problema es complicado, pero haré lo posible
+por ayudar. 
+
+[issue-link]: https://github.com/rubencabrera/odoo-docker/issues/new
+[compose-install]: https://docs.docker.com/compose/install/]
