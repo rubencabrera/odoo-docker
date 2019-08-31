@@ -1,8 +1,11 @@
-# Se necesita docker y docker-compose. Ejecutar con:
+# Compose file suitable for local development.
+# Run with:
 # docker-compose -f docker-compose.yml up
-# Se iniciará un contenedor con postgresql y otro con odoo. 
-# Para evitar conflictos con el puerto en local si ya hay postgres
-# se usa el 5433 en lugar del estándar 5432 de postgresql.
+# Will start a container with odoo and another one with postgres exposed
+# on port 5433 (in case you have a local postgres already running).
+# Also mounts a volume in your machine's /opt/odooo-docker/opt path mounted
+# where the container's code is. The projects are cloned there, so you can
+# use git to manage each container's repo branches. 
 ---
 version: '3.1'
 services:
@@ -13,29 +16,31 @@ services:
       - POSTGRES_USER=odoo
     ports:
       - "5433:5432"
+    restart: always
     volumes:
       - data_storage:/var/lib/postgresql/data
   odoo12:
     container_name: odoo12
     depends_on:
       - db
+    environment:
+      - ADMIN_PASSWD=FIXME
+      - DB_FILTER=False
     image: "rubencabrera/odoo-docker:12.0.4"
     ports:
       - "8169:8069"
       - "8171:8071"
       - "8172:8072"
-    environment:
-      - ADMIN_PASSWD=FIXME
-      - DB_FILTER=False
+    restart: always
     volumes:
-      - odoo12_data:/var/lib/odoo
       - codigo:/opt
+      - odoo12_data:/var/lib/odoo
 volumes:
-  data_storage:
-  odoo12_data:
   codigo:
     driver: local
     driver_opts:
       o: bind
       type: none
       device: /opt/odoo-docker/opt    # This is where the code will live.
+  data_storage:
+  odoo12_data:
