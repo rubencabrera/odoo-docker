@@ -10,14 +10,16 @@ services:
 
 jobs:
   include:
-    - stage: "Build"
-      name: "Build docker image"
+    - stage: build docker image
+      name: "Test build docker image"
       script:
       - docker build -t "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" .
-  deploy:
-    provider: script
-    skip_cleanup: true
-    script: ./.travis/docker_push.bash
-    on:
-      tags: true
-      branch: 12
+    - stage: test
+      script: docker-compose up
+    - stage: deploy
+      provider: script
+      skip_cleanup: true
+      script: ./.travis/docker_push.bash
+      on:
+        tags: true
+        branch: 12
