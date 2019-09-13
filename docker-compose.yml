@@ -7,12 +7,13 @@
 version: '3.1'
 services:
   db:
-    image: postgres:9.6
     environment:
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
+    image: postgres:9.6
     ports:
       - "5433:5432"
+    restart: always
     volumes:
       - data_storage:/var/lib/postgresql/data
   odoo12:
@@ -24,6 +25,7 @@ services:
       - "8069:8069"
       - "8071:8071"
       - "8072:8072"
+    restart: always
     volumes:
       - odoo_data:/var/lib/odoo
 volumes:
