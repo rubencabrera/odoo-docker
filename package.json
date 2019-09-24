@@ -17,15 +17,15 @@
       "path": "semantic-release-docker",
       "registryUrl": "docker.io"
     },
-    "plugins": [
+    "plugins": {
     "@semantic-release/commit-analyzer": "6.3.0",
     "@semantic-release/git": "7.0.16",
     "semantic-release-docker": "2.2.0"
-    ],
-  "publish": [
+    },
+  "publish": {
     "path": "semantic-release-docker",
     "name": "rubencabrera/odoo-docker"
-  ]
+  }
   },
   "keywords": [
     "odoo"
