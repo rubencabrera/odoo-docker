@@ -18,7 +18,7 @@ jobs:
     if: branch = 12 AND type = push AND fork = false
     language: node_js
     node_js: '8'
-    if: tag IS present
+    #if: tag IS present
     provider: script
     skip_cleanup: true
     script:
@@ -27,5 +27,3 @@ jobs:
     #on:
       #tags: true
       #branch: 12
-
-      # ver package.json a medias de https://revelry.co/semantic-release/
