@@ -10,20 +10,20 @@ services:
 - docker
 jobs:
   include:
-  - stage: build docker image
-    name: Test build docker image
-    script:
-    - docker build -t "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" .
   - stage: test
-    script: docker run  "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" /opt/odoo/odoo-bin --version 
-  - stage: deploy
+    script: 
+    - docker build -t "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" .
+    - docker run  "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" /opt/odoo/odoo-bin --version 
+  - stage: release
+    if: branch = 12 AND type = push AND fork = false
+    language: node_js
+    node_js: '8'
+    #if: tag IS present
     provider: script
     skip_cleanup: true
     script:
-      - nvm install lts/*
-      - npx semantic-release
-    on:
-      tags: true
-      branch: 12
-
-      # ver package.json a medias de https://revelry.co/semantic-release/
+    - docker build -t "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" .
+    - npm run semantic-release
+    #on:
+      #tags: true
+      #branch: 12
