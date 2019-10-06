@@ -5,25 +5,21 @@ env:
   global:
   - secure: TDAVU5ZV+gR6SfUFTHay+l7/EY6La2HfPfA4lV5pyn+B1xdufLBnzxK89OGyxFDjNUUwsvwmA1iKRODj23Qktd38Ixt+JxfBmPoJkgE7qdDxFKS2KSPsKT/dYqyI8Z/Ja0xi45HItoRlIO7VoyaPI4QkaWH9PdG1SZe7rPUbAhfi703pt74gJwOUwXAPT+ltmgRW3X9D3NH4UwcLDZdc24p0muQfa5+3Tyo0BwpPDZq3XyaUmaanHVdNqOcrEtWVdst6HyyyV458MMc58mH0UE/NcZgGWjHV7GXjMl9OXINA0+nV//jOkhSmrWSPXAhOPdlmNNg9bWFuIwI7UzVWQ+tUEfzDj1xamXniRECVwuD7/oU+wAswHcWj2/p5iUQ4aMf6pfxe/ECgvMC8HdzXzafwEJ9cIYsH32REq203eNNL6E/Gk7i5iY75f4XcAjMwop0X6khqg1V3APkPrOnt5uOvz5dmykMS306OKe6ZcO0XiNuM6Gn4yVtfZ59wLxTCJn6PJpEHQB20DNI4NN/Y528ESqRDrHOKl8rJuPRbTspfjxB7HrmL3EW5ynZ+IL2WDfC9e+S1+1jtgylEF1swCgpqg+qpfHpZLdwKZysLg+p3buVBAMDhWG5icF7V3cR6ACsjFNXbl98jk20EfLdO4bO1aJJz2OcVMYf5BuU8ZsE=
   - secure: o235uaW/z0gHhXFI46MeMpfsjVoVJTClm3N7X8Fcv3qfHC4euxNWvRSkOrh11ZqC6tHjH3LLb5IV4HmGiPShjCcSXuxlOiTQeVciNihsjLybule6kmypO8TJWuJPi3DHVBr/naUBnIyUzA2vDedJ0Va3pzSU+ZyAv8izR7GQ/HAEBnri48JKP08bMkYONp5EDyHA5tTqTPJYKBhZsi8pdcFl7Ob5t6OWZuM1UMWyuDMgzVhUVnq53Ont5qFMVzgu+icGtrFIP6eEjI7zVUTpNTqvVaoesy7peY3gBm55401onypQd2KJNd4gyAiuv3kQtEyoL4ln0GvoaDl93Pi8hu4XKRX2HALI+jJi5j4HwmMSaVYas5O2O7HVGXDuHyhFw6t18hsYaiL0Ol9FF/k7g4ufTKBfszvLIVmQVRKrq7xULYDrlwf7I5r/B15WUqgKumdktsp82y7NHuhf89eY40t2R6G5QeqojfabPXxprnZpHAISbxFgoNQGQmswW5D7YxMJnX7HAUR2fxgyvq5THGDwhh47vRdemgzIK+VMAEwip1NTF42Sl2Y9Uyx2Vs6gAAzPPyf7gwTJQjc3OiyaY93Mea/O/hllLKLAezQBQTBzzsVUdflNrXgjKf/uGDwh0ZJhhaKsDmT+pf7o4R8hddHv6numhSClLG087Kdm5AI=
-  - secure: wIhlZfS0UW2isH9f5Gn2A9Ws8guRG9LeahXc9C3Ww/TRnOnhunKDZPwusUNXprD23csg3f7g3j/DJpFssIQoynT2sVB6Xn66izBrDXF9l6RNvK88wbyZUws6cU45np9G74UJaRDz74NQpDOGHxfTEDWBoN2kTvegQxPUAMiwdifUjOg3jlmgRYdw8SZGnLre0iA6h1z5ztobJkzRL6QAnAJVVF03YTlSWSpxlAZtnmIrouH6TjbLMSapM7J0aPVGxYT11eQrySsnKpr69JovsCLXwh6YawrQxcajZzlMwi5AuolKULxuRSnsLYvLeI+hMcEodNIHgEcavi13ngITY6K0ADTwiMqDAxUVIIPydZDILcrGHUwze6zIMc0OWiJPNrYHCq3zMSQ7VY+/tH3Sk30XYQAWoRlWsHxmg46GEQq9XGjISP1RMxsolhykXbfgxbcwy52zYTfskPHC2N0eXE3Fhmq0dPPn+96qoeUywQjDm1o4nEn+VHN9j3bLrISftl20VuHAq0xs05MJ1Iyfay8NWDdfL1dkxqYUEvLfeQWkMFHNDh+KVVjMV9W+YBzzPA9Cma7/x80Z13QZNhT7VCV0ZjdDGpyIuEhkhmFCXscgRvOaLzKZWe5uyNpRdxeUFPXTlnimKg/amrrPL3ls6xoixkA5XyIrYJuL4/eXPGE=
+  - secure: eF1HFwsknOYkViCCfUwrmA1bosoG/2p5MMk3I/B8maXQA+uj22F1grlg6Akt5cXKLl1Dq7ccVGex0Q/EGaV7XD3KFYqGTfMoXE+dQdTRVegCwnwM+5jr81Mea5iylwnAXRHE2wZTiqPK20KASV+XZIklaznNl1+1EL0g+32DaHKrO9+XraOIcthGHDpEp2AX3o6uMzbzAmpEZCHyO+zV+FUB9wTZ15Mzb3oJVqjOMBUFIWo60ZhkaF7WdjtQ6NldwJgpl8HKrDXZKIcp7v86AT9ym/XRy2JmckjZX7JOeNMvV4DgZv5y59GrcPeCNNZvQ0zv1q8W99RlsD0y6i8WA5vN0P833vtm6qjRxt/g+HAYKKTuWhR6ozp8WmMn/aPiNAtgZEaotnIjbsu6TFDluQpeEXCqwss8Is9IXse91F8m2sz2O6JZfQyZUhEBHTEe458aCKVOlGhvvaZK5qsBNz4mmAFj6vM4itBFOXiIYoOPM6c+p4UN6nB/hGGXNJJhbt6dUx65V56VXzBfvgo6mv1UY07xuaQXbomo0grf9RMbf2EFlun/tNJ/3XbAKd0CLDb8zLs/12a9gvWkWwwFFS3Sgj4CS6TVeHBAXep3FD/EZBk2FincFvmsUWxIZDTSMBj/1dRHlYHYs/zzb8sBTDFDGwtOSFxqGuXsX42O5Sw=
 services:
 - docker
 jobs:
   include:
   - stage: test
-    script: 
+    script:
     - docker build -t "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" .
-    - docker run  "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" /opt/odoo/odoo-bin --version 
+    - docker run  "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" /opt/odoo/odoo-bin --version
   - stage: release
     if: branch = 12 AND type = push AND fork = false
     language: node_js
     node_js: '8'
-    #if: tag IS present
     provider: script
     skip_cleanup: true
     script:
     - docker build -t "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" .
     - npm run semantic-release
-    #on:
-      #tags: true
-      #branch: 12
