@@ -1,6 +1,5 @@
 {
   "name": "odoo-docker",
-  "version": "12.0.5",
   "description": "Odoo docker build with OCA repos",
   "main": "entrypoint.sh",
   "scripts": {
