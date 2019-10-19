@@ -15,7 +15,8 @@ jobs:
     - docker build -t "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" .
     - docker run  "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" /opt/odoo/odoo-bin --version
   - stage: release
-    if: branch = 12 AND type = push AND fork = false
+    if: branch = semantic-release-2
+    # if: branch = 12 AND type = push AND fork = false
     language: node_js
     node_js: '8'
     provider: script
