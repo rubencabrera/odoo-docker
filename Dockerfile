@@ -131,7 +131,7 @@ RUN git clone --branch 12.0 --depth 1 https://github.com/oca/account-analytic.gi
     git clone --branch 12.0 --depth 1 https://github.com/oca/management-system.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/manufacture.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/manufacture-reporting.git; \
-    git clone --branch 12.0 --depth 1 https://github.com/oca/margin-analysis.git \
+    git clone --branch 12.0 --depth 1 https://github.com/oca/margin-analysis.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/operating-unit.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/partner-contact.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/pos.git; \
