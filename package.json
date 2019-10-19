@@ -12,7 +12,7 @@
     "@semantic-release/git": "7.0.16"
   },
   "release": {
-    "branch": "12",
+    "branch": "semantic-release-2",
     "repositoryUrl": "git@github.com:rubencabrera/odoo-docker.git",
     "verifyConditions": {
       "path": "semantic-release-docker",
@@ -23,9 +23,9 @@
     "@semantic-release/git": "7.0.16",
     "semantic-release-docker": "2.2.0"
     },
-  "publish": {
-    "path": "semantic-release-docker",
-    "name": "rubencabrera/odoo-docker"
+    "publish": {
+      "path": "semantic-release-docker",
+      "name": "rubencabrera/odoo-docker"
   }
   },
   "keywords": [
