@@ -13,7 +13,7 @@
   },
   "release": {
     "branch": "semantic-release-2",
-    "repositoryUrl": "git@github.com:rubencabrera/odoo-docker.git",
+    "repositoryUrl": "https//github.com/rubencabrera/odoo-docker.git",
     "verifyConditions": {
       "path": "semantic-release-docker",
       "registryUrl": "docker.io"
