@@ -7,7 +7,6 @@
   },
   "devDependencies": {
     "semantic-release": "15.13.24",
-    "semantic-release-docker": "2.2.0",
     "@semantic-release/commit-analyzer": "6.3.0",
     "@semantic-release/git": "7.0.16"
   },
@@ -16,19 +15,10 @@
 		"debug": true,
     "repositoryUrl": "https://github.com/rubencabrera/odoo-docker.git",
 		"tagFormat": "${version}",
-    "verifyConditions": {
-      "path": "semantic-release-docker",
-      "registryUrl": "docker.io"
-    },
     "plugins": {
     "@semantic-release/commit-analyzer": "6.3.0",
-    "@semantic-release/git": "7.0.16",
-    "semantic-release-docker": "2.2.0"
-    },
-    "publish": {
-      "path": "semantic-release-docker",
-      "name": "rubencabrera/odoo-docker"
-  }
+    "@semantic-release/git": "7.0.16"
+    }
   },
   "keywords": [
     "odoo"
