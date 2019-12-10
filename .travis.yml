@@ -17,13 +17,15 @@ jobs:
     skip_cleanup: true
     script:
     - docker build -t "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" .
-    - npm run semantic-release
+    - nvm install lts/*
+    - npx semantic-release
   - stage: deploy
     on:
       tags: true
     provider: script
     script:
     - "./.travis/docker_push.bash"
+    skip_cleanup: true
 env:
   global:
   - secure: OL75lxUJwRqwvI4CcJpYEzZu5sGIV86YS/XH1/uwR/tee87GPUt17KK7HHMjdPufrBayfSCQC4f/LTf9vJbjG1PcvQs9rsFFpO1gD6YwUB92qodLFLum8MGnkGGwgEC7PM8sqT+a9+vUt2RcZCGiTl05cv4bV9t9KKHASLBKKZXPBJzwELcZXcRcTT5dIsvh02F77vp8udoruXO7q3bFCBdPwygIXSIBElDm4y1gm37dGChuiUEjhDv/ZFKs0Xz4js0wipZvvaI6OXmJZ/5RMqXctRMtx6az9o0h7lsAu4eQzwE1TfZebNREc2/0FeRbJT4PVQ+ZEBLK+ExkGbb3rd+xutv1jcfB5v5T/6M3KH5H2sCf0ZzJjyys1pOG6uLDh0gGdcm+QSiwaj5bRVF2Vaim8pqetDU+Afzp7jcNBooSXOe488u/hgUQhe+d5Fc9SqWGHuauu8WUdrD2XbxDz/NALUaT3butUuwadgHd9+7wpMLQtouzv8fxwAr3qiz2+yBvWntLKhrF/tER9NSP+PAQYm0S6ncvZ8CzGSpk11VsSzWpSGM3YgkXiyCmC0lttRX8zFWYFQpQt2eSp0sN0eP7pMqPxM2zx/qNBgUkZrM3pLOFCfopdFlErb7ggqZTE3bLwBo4RDtQ0eZSAFOnto5TTrLfELKlMzczE+vYw1U=

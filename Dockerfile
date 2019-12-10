@@ -102,7 +102,7 @@ USER odoo
 WORKDIR /opt/odoo
 RUN git clone --branch 12.0 --depth 1 https://github.com/oca/ocb.git /opt/odoo
 
-# Aquí van los repos oca
+# Odoo Community Association repositories
 WORKDIR /opt/repos/oca
 RUN git clone --branch 12.0 --depth 1 https://github.com/oca/account-analytic.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/account-budgeting.git; \
