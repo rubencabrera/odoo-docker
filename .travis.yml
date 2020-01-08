@@ -16,9 +16,7 @@ jobs:
     provider: script
     skip_cleanup: true
     script:
-    - docker build -t "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" .
-    - nvm install lts/*
-    - npx semantic-release
+    - "./.travis/release.bash"
   - stage: deploy
     on:
       tags: true
