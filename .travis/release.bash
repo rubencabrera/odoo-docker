@@ -2,9 +2,9 @@
 
 set -e
 
-if [ -z "${GH_TOKEN}"]
+if [ -z "${GH_TOKEN}" && -z "${GITHUB_TOKEN}"]
 then
-  echo "No GH_TOKEN defined!";
+  echo "Neither GH_TOKEN nor GITHUB_TOKEN defined!";
   exit 1;
 fi
 
