@@ -5,18 +5,15 @@ services:
 - docker
 jobs:
   include:
-  # - stage: test
-    # script:
-    # - docker build -t "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" .
-    # - docker run  "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" /opt/odoo/odoo-bin --version
   - stage: release
     if: branch = semantic-release-2
     language: node_js
     node_js: '8'
     provider: script
     skip_cleanup: true
-    script:
+    before_script:
     - "./.travis/release.bash"
+    script:
     - nvm install lts/*
     - npx semantic-release
   - stage: deploy

@@ -2,6 +2,13 @@
 
 set -e
 
+
+if [ -z "${TRAVIS_SECURE_ENV_VARS}"]
+then
+  echo "Secure env vars not available";
+  exit 1;
+fi
+
 if [ -z "${GH_TOKEN}"]
 then
   echo "GH_TOKEN not defined";
