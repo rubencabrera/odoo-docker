@@ -2,12 +2,12 @@
 
 set -e
 
-if [ -z "${GH_TOKEN}" && -z "${GITHUB_TOKEN}"]
+if [ -z "${GH_TOKEN}"]
 then
-  echo "Neither GH_TOKEN nor GITHUB_TOKEN defined!";
+  echo "GH_TOKEN not defined";
   exit 1;
 else
-  echo "Token defined"
+  echo "GH_TOKEN token defined"
 fi
 
 echo "Building image again"
