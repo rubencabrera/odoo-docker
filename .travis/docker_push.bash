@@ -2,7 +2,7 @@
 
 set -e
 
-if [ -z "${DOCKER_USERNAME}" ]
+if [ -z "${DOCKER_USERNAME}" ];
 then
   echo "Empty DOCKER_USERNAME variable!";
   exit 1;
