@@ -3,16 +3,16 @@
 set -e
 
 
-if [ -z "${TRAVIS_SECURE_ENV_VARS}"]
+if [[ -z "${TRAVIS_SECURE_ENV_VARS}"]]
 then
   echo "Secure env vars not available";
   exit 1;
 fi
 
-if [ -z "${GH_TOKEN}"]
+if [[ -z "${GH_TOKEN}"]]
 then
   echo "GH_TOKEN not defined";
-  if [ -z "${GITHUB_TOKEN}"]
+  if [[ -z "${GITHUB_TOKEN}"]]
   then
     echo "GITHUB_TOKEN not defined";
     exit 1;
