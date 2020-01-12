@@ -17,14 +17,14 @@ jobs:
     skip_cleanup: true
     script:
     - "./.travis/release.bash"
+    - nvm install lts/*
+    - npx semantic-release
   - stage: deploy
     on:
       tags: true
     provider: script
     script:
     - "./.travis/docker_push.bash"
-    - nvm install lts/*
-    - npx semantic-release
     skip_cleanup: true
 env:
   global:
