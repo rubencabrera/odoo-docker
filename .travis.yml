@@ -6,11 +6,12 @@ services:
 jobs:
   include:
   - stage: test
-    script:
+    before_script:
     - docker build -t "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" .
+    script:
     - docker run  "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" /opt/odoo/odoo-bin --version
   - stage: release
-    if: branch = semantic-release-2
+    if: branch = 12 OR branch = 12-dev
     language: node_js
     node_js: '8'
     provider: script
