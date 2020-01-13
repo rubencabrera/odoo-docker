@@ -9,6 +9,6 @@ then
 fi
 
 echo "Building image again"
-docker build -t "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}" .
+docker build -t "${TRAVIS_REPO_SLUG}:${TRAVIS_TAG}" .
 echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
-docker push "${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}";
+docker push "${TRAVIS_REPO_SLUG}:${TRAVIS_TAG}";
