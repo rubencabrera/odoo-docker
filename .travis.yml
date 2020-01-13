@@ -22,8 +22,7 @@ jobs:
     - nvm install lts/*
     - npx semantic-release
   - stage: deploy
-    on:
-      tags: true
+    if: tag IS present
     provider: script
     script:
     - "./.travis/docker_push.bash"
