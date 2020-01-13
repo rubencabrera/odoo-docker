@@ -1,5 +1,7 @@
 # Odoo docker image including other repos.
 
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+
 This repo builds a docker image for Odoo, including [OCA](https://github.com/OCA) repos I find useful. Not all repos are included as
 many are specific to local regulations and contradict themselves.
 
@@ -19,7 +21,7 @@ on containers, mounting volumes for persistent data.
 
 Regarding resources, will vary heavily depending on the number of users and
 data, but a bare minimum with not much guarantees will be 1GB of RAM. It will
-be uch better with something above 4GB. 
+be much better with something above 4GB. 
 
 ## Running with docker-compose
 

@@ -1,6 +1,6 @@
-# DOCKER para odoo 12 de Odoo Community Backports
+# DOCKER image to run odoo 12 with Odoo Community Backports and OCA addons
 FROM debian:stretch
-MAINTAINER Rubén Cabrera Martínez <rcabrera@praxya.com>
+MAINTAINER Rubén Cabrera Martínez <dev@rubencabrera.es>
 EXPOSE 8069 8071 8072
 ENV LANG C.UTF-8
 
@@ -102,7 +102,7 @@ USER odoo
 WORKDIR /opt/odoo
 RUN git clone --branch 12.0 --depth 1 https://github.com/oca/ocb.git /opt/odoo
 
-# Aquí van los repos oca
+# Odoo Community Association repositories
 WORKDIR /opt/repos/oca
 RUN git clone --branch 12.0 --depth 1 https://github.com/oca/account-analytic.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/account-budgeting.git; \
