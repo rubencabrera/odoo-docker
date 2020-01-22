@@ -59,12 +59,8 @@ set -e
 : ${DB_HOST:="db"}
 : ${DB_FILTER:="^%d"}
 # Estas no las estabamos metiendo:
-##RUN echo 'dbfilter = '${DBFILTER:-"^%d"} >> /opt/config/odoo-server.conf; \
-    ## echo 'logfile = '${LOGFILE:-"/var/log/odoo/odoo-server.log"} >> /opt/config/odoo-server.conf; \
-    ## echo 'logrotate = '${LOGROTATE:-True} >> /opt/config/odoo-server.conf; \
-    ## echo 'pg_path = '${PG_PATH:-None} >> /opt/config/odoo-server.conf; \
-
-
+ ## echo 'logfile = '${LOGFILE:-"/var/log/odoo/odoo-server.log"} >> /opt/config/odoo-server.conf; \
+ ## echo 'pg_path = '${PG_PATH:-None} >> /opt/config/odoo-server.conf; \
 
 function write_conf() {
 	param="$1"
@@ -74,7 +70,7 @@ function write_conf() {
 	fi;
 }
 
-
+echo "ENTRYPOINT: Setting conf values"
 write_conf "log_handler" $LOG_HANDLER
 write_conf "log_level" $LOG_LEVEL
 write_conf  "log_db" ${LOG_DB}
@@ -127,8 +123,8 @@ write_conf 'xmlrpc_port' ${XMLRPC_PORT}
 write_conf 'xmlrpcs' ${XMLRPCS}
 write_conf 'xmlrpcs_port' ${XMLRPCS_PORT}
 write_conf 'db_host' ${DB_HOST}
-write_conf 'dbfilter' ${DB_FILTER}
-# El case es de los argumentos pasados al entrypoint, no entra!
+write_conf 'dbfilter' "${DB_FILTER}"
+
 case "$1" in
 	-- | /opt/odoo/odoo-bin)
 		shift
