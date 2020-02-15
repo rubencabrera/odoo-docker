@@ -92,6 +92,7 @@ RUN pip3 install \
 	zeep \
 	zklib
 RUN mkdir /opt/odoo; mkdir /var/log/odoo; mkdir /var/lib/odoo; mkdir /opt/repos && mkdir /opt/repos/oca
+RUN mkdir  -p /opt/repos/other
 RUN useradd --home /opt/odoo --shell /bin/bash odoo
 RUN chown -R odoo:odoo /opt/odoo; chown -R odoo:odoo /var/lib/odoo; \
     chown -R odoo:odoo /var/log/odoo; chown -R odoo:odoo /opt/repos
@@ -157,8 +158,10 @@ RUN git clone --branch 12.0 --depth 1 https://github.com/oca/account-analytic.gi
     git clone --branch 12.0 --depth 1 https://github.com/oca/website.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/website-cms.git;
 
-# Repositorios abiertos que no son de la oca ni de Praxya
-# TODO
+# Other repos, specify folder name so this doesn't get messy with all repos
+# named odoo-addons or similar
+WORKDIR /opt/repos/other
+RUN git clone --branch 12.0 --depth 1 https://github.com/rubencabrera/odoo-addons.git rubencabrera;
 
 # Configuración
 USER root
