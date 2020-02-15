@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install \
         net-tools=1.60+git20161116.90da8a0-1 \
         node-clean-css=1.0.12-2 \
         node-less=1.6.3~dfsg-2 \
-        postgresql-client-9.6=9.6.16-1.pgdg90+1 \
+        postgresql-client-9.6=9.6.14-1.pgdg90+1 \
         python3-apt=1.4.0~beta3 \
         python3-babel=2.3.4+dfsg.1-2 \
         python3-cups=1.9.73-1 \
