@@ -23,7 +23,7 @@ services:
     environment:
       - "DEBUG_MODE=True"
       - "DB_FILTER=.*"
-    image: "rubencabrera/odoo-docker:12.3.2"
+    image: "rubencabrera/odoo-docker:12.4.0"
     ports: 
       - "8069:8069"
       - "8071:8071"
@@ -34,6 +34,7 @@ services:
       - codigo:/opt/repos
       - odoocode:/opt/odoo
 volumes:
+  # TODO: The local paths need to exist for volumes to be mounted
   data_storage:
   odoo_data:
   codigo:
