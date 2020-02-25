@@ -42,10 +42,10 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: '/home/ruben/dev/odoo/odoo-docker/opt/repos'
+      device: '${ODOO_CODE}/opt/repos'
   odoocode:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: '/home/ruben/dev/odoo/odoo-docker/opt/odoo'
+      device: '${ODOO_CODE}/opt/odoo'
