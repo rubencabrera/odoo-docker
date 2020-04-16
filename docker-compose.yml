@@ -10,6 +10,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
+      - POSTGRES_DB=postgres
     image: postgres:9.6
     ports:
       - "5433:5432"
