@@ -164,9 +164,10 @@ RUN git clone --branch 12.0 --depth 1 https://github.com/oca/account-analytic.gi
 # Repositorios abiertos que no son de la oca ni de Praxya
 # TODO
 WORKDIR /opt/repos/other
-RUN git clone --branch 12.0 --depth 1 https://github.com/rubencabrera/odoo-addons.git; 
+RUN git clone --branch 12.0 --depth 1 https://github.com/rubencabrera/odoo-addons.git rubencabrera-odoo-addons; 
 
 # Configuración
+WORKDIR /opt
 USER root
 RUN mkdir /opt/config
 COPY ./odoo-server.conf /opt/config/odoo-server.conf
