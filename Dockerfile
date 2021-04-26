@@ -85,14 +85,19 @@ RUN pip3 install \
         openupgradelib \
         num2words \
 	pandas \
+	phonenumbers \
         psycogreen \
 	twilio \
         unidecode \
         xlrd \
 	zeep \
 	zklib
-RUN mkdir /opt/odoo; mkdir /var/log/odoo; mkdir /var/lib/odoo; mkdir /opt/repos && mkdir /opt/repos/oca
-RUN mkdir  -p /opt/repos/other
+RUN mkdir /opt/odoo; \
+    mkdir /var/log/odoo; \
+    mkdir /var/lib/odoo; \
+    mkdir /opt/repos; \
+    mkdir -p /opt/repos/oca; \
+    mkdir -p /opt/repos/other
 RUN useradd --home /opt/odoo --shell /bin/bash odoo
 RUN chown -R odoo:odoo /opt/odoo; chown -R odoo:odoo /var/lib/odoo; \
     chown -R odoo:odoo /var/log/odoo; chown -R odoo:odoo /opt/repos
@@ -120,8 +125,10 @@ RUN git clone --branch 12.0 --depth 1 https://github.com/oca/account-analytic.gi
     git clone --branch 12.0 --depth 1 https://github.com/oca/bank-statement-reconcile.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/commission.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/community-data-files.git; \
+    git clone --branch 12.0 --depth 1 https://github.com/oca/connector-telephony.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/contract.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/crm.git; \
+    git clone --branch 12.0 --depth 1 https://github.com/oca/data-protection.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/e-commerce.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/event.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/hr.git; \
@@ -158,12 +165,12 @@ RUN git clone --branch 12.0 --depth 1 https://github.com/oca/account-analytic.gi
     git clone --branch 12.0 --depth 1 https://github.com/oca/website.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/website-cms.git;
 
-# Other repos, specify folder name so this doesn't get messy with all repos
-# named odoo-addons or similar
+
 WORKDIR /opt/repos/other
-RUN git clone --branch 12.0 --depth 1 https://github.com/rubencabrera/odoo-addons.git rubencabrera;
+RUN git clone --branch 12.0 --depth 1 https://github.com/rubencabrera/odoo-addons.git rubencabrera-odoo-addons; 
 
 # Configuración
+WORKDIR /opt
 USER root
 RUN mkdir /opt/config
 COPY ./odoo-server.conf /opt/config/odoo-server.conf

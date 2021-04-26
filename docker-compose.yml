@@ -4,7 +4,7 @@
 # Para evitar conflictos con el puerto en local si ya hay postgres
 # se usa el 5433 en lugar del estándar 5432 de postgresql.
 ---
-version: '3.1'
+version: '3.7'
 services:
   db:
     environment:
@@ -29,5 +29,6 @@ services:
     volumes:
       - odoo_data:/var/lib/odoo
 volumes:
+  # TODO: The local paths need to exist for volumes to be mounted
   data_storage:
   odoo_data:
