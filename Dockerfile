@@ -92,8 +92,12 @@ RUN pip3 install \
         xlrd \
 	zeep \
 	zklib
-RUN mkdir /opt/odoo; mkdir /var/log/odoo; mkdir /var/lib/odoo; \
-    mkdir /opt/repos; mkdir -p /opt/repos/oca; mkdir -p /opt/repos/other
+RUN mkdir /opt/odoo; \
+    mkdir /var/log/odoo; \
+    mkdir /var/lib/odoo; \
+    mkdir /opt/repos; \
+    mkdir -p /opt/repos/oca; \
+    mkdir -p /opt/repos/other
 RUN useradd --home /opt/odoo --shell /bin/bash odoo
 RUN chown -R odoo:odoo /opt/odoo; chown -R odoo:odoo /var/lib/odoo; \
     chown -R odoo:odoo /var/log/odoo; chown -R odoo:odoo /opt/repos

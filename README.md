@@ -1,4 +1,4 @@
-# Odoo docker image Dev branch
+# Odoo docker image including other repos.
 
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
@@ -11,39 +11,6 @@ branches and tags for images could be created for other countries,
 had to do it. 
 
 # Usage
-
-This is the development branch, it's not perfectly portable yet.
-
-## Development directories
-
-To have the code available and easily accessible, you can set an environment
-variable called `ODOO_CODE` to tell compose where the mounted volumes will go.
-
-e.g.
-```
-export ODOO_CODE=/home/yourusername/odoo-docker
-```
-
-Docker compose will require an `odoo` and a `repos` folder to exist for the 
-mounted volumes, so for the example above, you will need something like:
-```
-/home/yourusername/odoo-docker/opt
-			        |
-			        /odoo
-			        /repos
-```
-
-If they are missing, volume mounting will fail when running docker-compose.
-No sweat, just create them.
-
-## User ID
-
-If you have an UID different from 1000, this won't let you access the mounted
-files because... docker. This can be tweaked, let me know and I will put 
-something in place.
-
-To get your UID run the `id` command on your terminal.
-
 
 ## Requirements
 
