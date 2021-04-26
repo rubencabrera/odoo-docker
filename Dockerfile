@@ -165,8 +165,7 @@ RUN git clone --branch 12.0 --depth 1 https://github.com/oca/account-analytic.gi
     git clone --branch 12.0 --depth 1 https://github.com/oca/website.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/website-cms.git;
 
-# Repositorios abiertos que no son de la oca ni de Praxya
-# TODO
+
 WORKDIR /opt/repos/other
 RUN git clone --branch 12.0 --depth 1 https://github.com/rubencabrera/odoo-addons.git rubencabrera-odoo-addons; 
 
