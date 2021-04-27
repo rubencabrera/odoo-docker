@@ -11,7 +11,9 @@
     "@semantic-release/git": "7.0.16"
   },
   "release": {
-    "branches": "12",
+    "branches": [
+		  "12", "master"
+		],
     "repositoryUrl": "https://github.com/rubencabrera/odoo-docker.git",
 		"tagFormat": "${version}",
     "plugins": {
