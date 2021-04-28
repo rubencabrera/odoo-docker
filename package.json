@@ -14,10 +14,21 @@
     "branches": ["12"],
     "repositoryUrl": "https://github.com/rubencabrera/odoo-docker.git",
 		"tagFormat": "${version}",
-    "plugins": {
-    "@semantic-release/commit-analyzer": "8.0.1",
-    "@semantic-release/git": "9.0.0"
-    }
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "angular",
+          "releaseRules": [
+            {"type": "docs", "scope": "README", "release": "patch"},
+            {"type": "refactor", "release": "patch"},
+            {"type": "style", "release": "patch"},
+            {"type": "build", "release": "patch"}
+          ]
+        }
+      ],
+      "@semantic-release/git"
+    ]
   },
   "keywords": [
     "odoo"
