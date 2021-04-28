@@ -1,4 +1,5 @@
 {
+  "semanticCommitType": "build",
   "extends": [
     "config:base"
   ]
