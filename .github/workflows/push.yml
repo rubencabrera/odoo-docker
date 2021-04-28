@@ -20,7 +20,6 @@ jobs:
         with:
           images: rubencabrera/odoo-docker
           tags: |
-            type=ref,event=branch
             type=ref,event=tag
       - name: Login to DockerHub
         uses: docker/login-action@v1
