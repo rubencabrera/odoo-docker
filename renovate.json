@@ -1,4 +1,5 @@
 {
+  "baseBranches": ["12", "12-dev"],
   "semanticCommitType": "build",
   "extends": [
     "config:base"
