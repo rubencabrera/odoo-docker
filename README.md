@@ -61,6 +61,17 @@ be much better with something above 4GB.
 
 Run `docker-compose up` in the root path. 
 
+One useful addition to the docker-compose definition is adding a `command` in
+the odoo12 service. When restoring a database, maybe with locally wip modules,
+some fields might cause issues. To cause a full module list update, check this
+command:
+
+```yaml
+  odoo12:
+    command: ["/opt/odoo/odoo-bin", "-u", "all"]
+    container_name: odoo12
+```
+
 ## Environment variables
 
 Odoo uses a config file that is a bit of a pain with a docker 
