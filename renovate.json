@@ -1,16 +1,17 @@
 {
-  "extends": [
-    "config:base",
     "regexManagers": [
       {
+        "datasourceTemplate": "github-tags",
         "fileMatch": ["^Dockerfile$"],
-        "matchDatasources": ["github-tags"],
         "matchStrings": [
-          "git clone --branch (?<currentValue>.*) --depth 1 https://github.com/oca/website-cms.git",
+          "git clone --branch (?<currentValue>.*) --depth 1 (?datasource)",
           "FROM (?<depName>\\S):(?<currentValue\\S*)"
-        ]
+        ],
+        "versioningTemplate": "git"
       }
     ],
     "semanticCommitType": "build"
+  "extends": [
+    "config:base"
   ]
 }
