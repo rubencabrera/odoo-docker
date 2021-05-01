@@ -1,16 +1,16 @@
 {
-    "regexManagers": [
-      {
-        "datasourceTemplate": "github-tags",
-        "fileMatch": ["^Dockerfile$"],
-        "matchStrings": [
-          "git clone --branch (?<currentValue>.*) --depth 1 (?datasource)",
-          "FROM (?<depName>\\S):(?<currentValue\\S*)"
-        ],
-        "versioningTemplate": "git"
-      }
-    ],
-    "semanticCommitType": "build"
+  "regexManagers": [
+    {
+      "datasourceTemplate": "github-tags",
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": [
+        "git clone --branch (?<currentValue>.*) --depth 1 (?datasource)",
+        "FROM (?<depName>\\S):(?<currentValue\\S*)"
+      ],
+      "versioningTemplate": "git"
+    }
+  ],
+  "semanticCommitType": "build",
   "extends": [
     "config:base"
   ]
