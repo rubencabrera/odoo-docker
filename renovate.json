@@ -4,10 +4,8 @@
       "datasourceTemplate": "github-tags",
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
-        "git clone --branch (?<currentValue>.*) --depth 1 (?datasource)",
-        "FROM (?<depName>\\S):(?<currentValue\\S*)"
-      ],
-      "versioningTemplate": "git"
+        "git clone --branch (?<currentValue>.*) --depth 1 https:\/\/github\.com\/(?<depName>.*?/.*?)\.git"
+      ]
     }
   ],
   "semanticCommitType": "build",
