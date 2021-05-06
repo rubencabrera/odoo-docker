@@ -5,10 +5,10 @@
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
         "git clone --branch (?<currentValue>.*) --depth 1 https:\/\/github\\.com\/(?<depName>.*?\/.*?)\\.git"
-      ]
+      ],
+      "semanticCommitType": "build"
     }
   ],
-  "semanticCommitType": "build",
   "extends": [
     "config:base"
   ]
