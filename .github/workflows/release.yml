@@ -21,6 +21,8 @@ jobs:
           extra_plugins: |
             @semantic-release/commit-analyzer
             @semantic-release/git
+            @semantic-release/release-notes-generator
+            @semantic-release/github
       - name: Set up QEMU
         if: steps.semantic.outputs.new_release_published == 'true'
         uses: docker/setup-qemu-action@v1
