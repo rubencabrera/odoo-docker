@@ -6,6 +6,13 @@
       "matchStrings": [
         "git clone --branch (?<currentValue>.*) --depth 1 https:\/\/github\\.com\/(?<depName>.*?\/.*?)\\.git"
       ]
+    },
+    {
+      "datasourceTemplate": "docker",
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": [
+        "FROM\\s+(?<depName>.*?):(?<currentValue>)"
+      ]
     }
   ],
   "extends": [
