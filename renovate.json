@@ -11,5 +11,6 @@
   "extends": [
     "config:base"
   ],
+  "semanticCommits": "enabled",
   "semanticCommitType": "build"
 }
