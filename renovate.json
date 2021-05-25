@@ -9,9 +9,10 @@
     },
     {
       "datasourceTemplate": "docker",
+      "versioningTemplate": "docker",
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
-        "FROM\\s+(?<depName>.*?):(?<currentValue>)"
+        "FROM\\s+(?<depName>.*?):(?<currentValue>.*)"
       ]
     }
   ],
