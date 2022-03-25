@@ -67,6 +67,7 @@ RUN git clone --branch 12.0 --depth 1 https://github.com/oca/account-analytic.gi
     git clone --branch 12.0 --depth 1 https://github.com/oca/sale-reporting.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/sale-workflow.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/server-tools.git; \
+    git clone --branch 12.0 --depth 1 https://github.com/oca/server-ux.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/social.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/stock-logistics-barcode.git; \
     git clone --branch 12.0 --depth 1 https://github.com/oca/stock-logistics-tracking.git; \
