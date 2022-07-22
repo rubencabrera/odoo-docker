@@ -80,7 +80,7 @@ RUN git clone --branch 12.0 --depth 1 https://github.com/oca/account-analytic.gi
 
 
 WORKDIR /opt/repos/other
-RUN git clone --branch 12.6.1 --depth 1 https://github.com/rubencabrera/odoo-addons.git rubencabrera-odoo-addons;
+RUN git clone --branch 12.6.6 --depth 1 https://github.com/rubencabrera/odoo-addons.git rubencabrera-odoo-addons;
 
 # Configuración
 WORKDIR /opt
