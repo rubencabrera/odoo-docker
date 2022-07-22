@@ -64,7 +64,7 @@ same name in lower case:
 | `DB_TEMPLATE` | `template1` |
 | `DB_NAME` | `False` |
 | `DB_MAXCONN` | `64` |
-| `DBFILTER` | `".*"` |
+| `DB_FILTER` | `"^%d"` |
 | `DB_MAXCONN` | `64` |
 | `DEBUG_MODE` | `False` |
 | `EMAIL_FROM` | `False` |
