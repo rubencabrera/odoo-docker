@@ -10,7 +10,6 @@ services:
     environment:
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
-      - POSTGRES_DB=postgres
     image: postgres:9.6
     ports:
       - "5433:5432"
@@ -21,10 +20,7 @@ services:
     container_name: odoo12
     depends_on:
       - db
-    environment:
-      - "DEBUG_MODE=True"
-      - "DB_FILTER=.*"
-    image: "rubencabrera/odoo-docker:12.4.0"
+    image: "rubencabrera/odoo-docker:12.7.11"
     ports: 
       - "8069:8069"
       - "8071:8071"
@@ -32,21 +28,7 @@ services:
     restart: always
     volumes:
       - odoo_data:/var/lib/odoo
-      - codigo:/opt/repos
-      - odoocode:/opt/odoo
 volumes:
   # TODO: The local paths need to exist for volumes to be mounted
   data_storage:
   odoo_data:
-  codigo:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: '${ODOO_CODE}/opt/repos'
-  odoocode:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: '${ODOO_CODE}/opt/odoo'

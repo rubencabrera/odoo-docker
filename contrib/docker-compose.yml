@@ -10,7 +10,7 @@
 version: '3.1'
 services:
   db:
-    image: postgres:9.6.5
+    image: postgres:9.6.23
     environment:
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
@@ -26,7 +26,7 @@ services:
     environment:
       - ADMIN_PASSWD=FIXME
       - DB_FILTER=False
-    image: "rubencabrera/odoo-docker:12.0.4"
+    image: "rubencabrera/odoo-docker:12.7.10"
     ports:
       - "8169:8069"
       - "8171:8071"
