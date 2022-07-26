@@ -1,5 +1,5 @@
 # DOCKER image to run odoo 12 with Odoo Community Backports and OCA addons
-FROM rubencabrera/odoo-base-image:12.2.9
+FROM rubencabrera/odoo-base-image:12.2.16
 MAINTAINER Rubén Cabrera Martínez <dev@rubencabrera.es>
 EXPOSE 8069 8071 8072
 ENV LANG C.UTF-8
