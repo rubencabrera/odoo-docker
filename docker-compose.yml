@@ -16,11 +16,11 @@ services:
     restart: always
     volumes:
       - data_storage:/var/lib/postgresql/data
-  odoo12:
-    container_name: odoo12
+  odoo14:
+    container_name: odoo14
     depends_on:
       - db
-    image: "rubencabrera/odoo-docker:12.7.11"
+    image: "rubencabrera/odoo-docker:14.0.0"
     ports: 
       - "8069:8069"
       - "8071:8071"

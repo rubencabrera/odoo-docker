@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - 12
+      - 14
 jobs:
   release:
     name: Release
