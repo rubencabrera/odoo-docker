@@ -1,5 +1,6 @@
 {
-  "baseBranches": ["12", "13", "14"],
+  "extends": ["config:base", ":dependencyDashboard"],
+  "baseBranches": ["12", "12-dev", "13", "14"],
   "regexManagers": [
     {
       "datasourceTemplate": "github-tags",
