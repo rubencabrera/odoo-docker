@@ -1,5 +1,5 @@
 {
-  "extends": ["config:base", ":dependencyDashboard"],
+  "extends": ["config:base", ":dependencyDashboard", ":semanticCommitTypeAll(build)"],
   "baseBranches": ["12", "12-dev", "13", "14"],
   "regexManagers": [
     {
@@ -16,7 +16,5 @@
         "FROM\\s+(?<depName>.*?):(?<currentValue>)"
       ]
     }
-  ],
-  "semanticCommits": "enabled",
-  "semanticCommitType": "build"
+  ]
 }
