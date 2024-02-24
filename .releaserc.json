@@ -15,6 +15,6 @@
     "@semantic-release/release-notes-generator",
     "@semantic-release/github"
   ],
-  "repositoryUrl": "https://github.com/rubencabrera/odoo-base-images.git",
+  "repositoryUrl": "https://github.com/rubencabrera/odoo-docker.git",
   "tagFormat": "${version}"
 }
