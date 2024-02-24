@@ -1,5 +1,7 @@
-# DOCKER image to run odoo 12 with Odoo Community Backports and OCA addons
-FROM rubencabrera/odoo-base-image:12.2.9
+# DOCKER image to run odoo 13 with Odoo Community Backports and OCA addons
+# WARNING: branch 13 is not taken care of and has never worked, this is a
+# non functional release. Do not use.
+FROM rubencabrera/odoo-base-image:13.0.0
 MAINTAINER Rubén Cabrera Martínez <dev@rubencabrera.es>
 EXPOSE 8069 8071 8072
 ENV LANG C.UTF-8
