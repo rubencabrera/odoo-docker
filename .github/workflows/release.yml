@@ -1,0 +1,23 @@
+name: Semantic Release
+on:
+  push:
+
+jobs:
+  semantic-release:
+    name: Semantic Release
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Semantic Release
+        id: semrel
+        env:
+          GITHUB_TOKEN: ${{ secrets.SEMREL_GITHUB_TOKEN }}
+        uses: cycjimmy/semantic-release-action@v4
