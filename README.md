@@ -22,7 +22,7 @@ on containers, mounting volumes for persistent data.
 
 Regarding resources, will vary heavily depending on the number of users and
 data, but a bare minimum with not much guarantees will be 1GB of RAM. It will
-be much better with something above 4GB. 
+be much better with something above 4GB.
 
 ## Running with docker-compose
 

@@ -1,5 +1,6 @@
 {
-  "baseBranches": ["12", "13", "14"],
+  "baseBranches": ["12.x", "14.x", "16.x"],
+  "extends": ["config:base", ":dependencyDashboard", ":semanticCommitTypeAll(build)"],
   "regexManagers": [
     {
       "datasourceTemplate": "github-tags",
@@ -10,10 +11,16 @@
     },
     {
       "datasourceTemplate": "docker",
+      "versioningTemplate": "docker",
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
-        "FROM\\s+(?<depName>.*?):(?<currentValue>)"
+        "FROM\\s+(?<depName>.*):(?<currentValue>.*)"
       ]
+    }
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"]
     }
   ],
   "semanticCommits": "enabled",
