@@ -1,5 +1,7 @@
-# DOCKER image to run odoo 14 with Odoo Community Backports and OCA addons
-FROM rubencabrera/odoo-base-image:14.1.1
+# DOCKER image to run odoo 15 with Odoo Community Backports and OCA addons
+# WARNING: No work done yet for 15, this is a dummy release to keep track of
+# it and move onto 16. Do not use.
+FROM rubencabrera/odoo-base-image:15.0.0
 MAINTAINER Rubén Cabrera Martínez <dev@rubencabrera.es>
 EXPOSE 8069 8071 8072
 ENV LANG C.UTF-8
