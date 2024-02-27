@@ -10,7 +10,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
-    image: postgres:9.6
+    image: postgres:16.2
     ports:
       - "5433:5432"
     restart: always
