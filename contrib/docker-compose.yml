@@ -7,7 +7,7 @@
 # where the container's code is. The projects are cloned there, so you can
 # use git to manage each container's repo branches. 
 ---
-version: '3.1'
+version: '3.8'
 services:
   db:
     image: postgres:9.6.24
@@ -19,8 +19,8 @@ services:
     restart: always
     volumes:
       - data_storage:/var/lib/postgresql/data
-  odoo14:
-    container_name: odoo14
+  odoo16:
+    container_name: odoo16
     depends_on:
       - db
     environment:
