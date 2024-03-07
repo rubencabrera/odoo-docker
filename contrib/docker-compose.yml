@@ -26,7 +26,7 @@ services:
     environment:
       - ADMIN_PASSWD=FIXME
       - DB_FILTER=False
-    image: "rubencabrera/odoo-docker:12.12.0"
+    image: "rubencabrera/odoo-docker:16.0.5"
     ports:
       - "8169:8069"
       - "8171:8071"
