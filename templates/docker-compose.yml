@@ -1,3 +1,4 @@
+{% if comments %}
 # Compose file suitable for local development.
 # First of all, read this file and pay attention to the FIXME comments.
 #
@@ -9,24 +10,29 @@
 # Also mounts a volume in your machine's /opt/odooo-docker/opt path mounted
 # where the container's code is. The projects are cloned there, so you can
 # use git to manage each container's repo branches.
+{% endif %}
 ---
 version: '3.8'
 name: {{ compose_project_name }}
 services:
   db:
     environment:
+{% if comments %}
       # DB env var needed for auto init on first run
+{% endif %}
       - POSTGRES_DB=postgres
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
     healthcheck:
       interval: 15s
+{% if comments %}
       # The odoo user has to match the `POSTGRES_USER` in the env vars
+{% endif %}
       test: [
         "CMD-SHELL",
         'psql -U odoo -d postgres -h 127.0.0.1 -p 5432 -c "select 1"'
       ]
-      start_period: 5s  # This might be too long after first run.
+      start_period: 5s{% if comments %}  # This might be too long after first run.{% endif %}
       retries: 5
     image: postgres:16.2
     ports:
@@ -34,6 +40,7 @@ services:
     volumes:
       - data_storage:/var/lib/postgresql/data
   odoo16:
+{% if comments %}
     # TODO: document the admin user password change for odoo 16:
     # This command sets the admin (id=2) password to "1" (just the number)
     # docker exec ${PSQL_CONTAINER_NAME} \
@@ -45,6 +52,7 @@ services:
     # command: ["/opt/odoo/odoo-bin", "-d", "${DATABASE_NAME}", "-u", "module_to_update"]
     # command: ["/opt/odoo/odoo-bin", "-d", "${DATABASE_NAME}", "-u", "all"]
     #
+{% endif %}
     container_name: ${COMPOSE_PROJECT_NAME}_odoo16
     depends_on:
       db:
@@ -54,7 +62,7 @@ services:
       - DB_FILTER={{ db_filter }}
     image: "rubencabrera/odoo-docker:16.2.0"
     ports: 
-      - "6899:6899"  # pudb telnet port
+      - "6899:6899"{% if comments %}  # pudb telnet port{% endif %}
       - "8069:8069"
       - "8071:8071"
       - "8072:8072"
@@ -65,14 +73,18 @@ services:
       - upstream_volume:/opt/odoo
 volumes:
   code_volume:
+{% if comments %}
     # This is where the code will live. For local development, you might want
     # to use something owned by your user.
+{% endif %}
     driver: local
     driver_opts:
       o: bind
       type: none
+{% if comments %}
       # FIXME: The local paths need to exist for volumes to be mounted.
       #     For prod environments, this might be better inside a dir in `/opt`
+{% endif %}
       device: ${ODOO_DOCKER_REPOS_HOST_PATH:-${HOME}/.${COMPOSE_PROJECT_NAME}_repos}
     name: ${COMPOSE_PROJECT_NAME}_code
   data_storage:
@@ -80,13 +92,17 @@ volumes:
   odoo_data:
     name: ${COMPOSE_PROJECT_NAME}_odoo_data
   upstream_volume:
+{% if comments %}
     # Odoo main code. This volume should only be needed for upstream
     # contributions.
+{% endif %}
     driver: local
     driver_opts:
       o: bind
       type: none
+{% if comments %}
       # FIXME: The local paths need to exist for volumes to be mounted.
       #     For prod environments, this might be better inside a dir in `/opt`
+{% endif %}
       device: ${ODOO_DOCKER_UPSTREAM_HOST_PATH:-${HOME}/.${COMPOSE_PROJECT_NAME}_upstream}
     name: ${COMPOSE_PROJECT_NAME}_upstream

@@ -6,6 +6,14 @@ from os import environ
 
 @click.command()
 @click.option(
+    "-c",
+    "--comments",
+    default=True,
+    help="Add comments to the compose file for better context and help.",
+    is_flag=True,
+    prompt="Leave help comments in the compose file?",
+)
+@click.option(
     "--db-filter",
     default=".*",
     help="db-filter to use. Defaults to .* but you should use a more"
@@ -23,10 +31,11 @@ from os import environ
     "in ${ODOO_DOCKER_PROJECT_NAME}_upstream",
     show_default=True,
 )
-def compose(db_filter, mount_upstream):
+def compose(comments, db_filter, mount_upstream):
     env = Environment(
+        autoescape=select_autoescape(),
         loader=FileSystemLoader("templates"),
-        autoescape=select_autoescape()
+        trim_blocks=True,
     )
     template = env.get_template("docker-compose.yml")
     print(
@@ -35,6 +44,7 @@ def compose(db_filter, mount_upstream):
                 "ODOO_DOCKER_PROJECT_NAME",
                 "odoo_docker"
             ),
+            comments=comments,
             db_filter=db_filter,
         )
     )
