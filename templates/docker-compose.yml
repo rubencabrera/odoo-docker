@@ -13,7 +13,7 @@
 {% endif %}
 ---
 version: '3.8'
-name: {{ compose_project_name }}
+name: {{ odoo_docker_project_name }}
 services:
   db:
     environment:
@@ -62,7 +62,9 @@ services:
       - DB_FILTER={{ db_filter }}
     image: "rubencabrera/odoo-docker:16.2.0"
     ports: 
+{% if pudb %}
       - "6899:6899"{% if comments %}  # pudb telnet port{% endif %}
+{% endif +%}
       - "8069:8069"
       - "8071:8071"
       - "8072:8072"
@@ -85,7 +87,7 @@ volumes:
       # FIXME: The local paths need to exist for volumes to be mounted.
       #     For prod environments, this might be better inside a dir in `/opt`
 {% endif %}
-      device: ${ODOO_DOCKER_REPOS_HOST_PATH:-${HOME}/.${COMPOSE_PROJECT_NAME}_repos}
+      device: {{ odoo_docker_repos_host_path }}
     name: ${COMPOSE_PROJECT_NAME}_code
   data_storage:
     name: ${COMPOSE_PROJECT_NAME}_data_storage
