@@ -13,7 +13,7 @@
 {% endif %}
 ---
 version: '3.8'
-name: {{ odoo_docker_project_name }}
+name: {{ project_name }}
 services:
   db:
     environment:
@@ -32,7 +32,7 @@ services:
         "CMD-SHELL",
         'psql -U odoo -d postgres -h 127.0.0.1 -p 5432 -c "select 1"'
       ]
-      start_period: 5s{% if comments %}  # This might be too long after first run.{% endif %}
+      start_period: 5s{% if comments %}  # This might be too long after first run.{% endif +%}
       retries: 5
     image: postgres:16.2
     ports:
@@ -87,24 +87,26 @@ volumes:
       # FIXME: The local paths need to exist for volumes to be mounted.
       #     For prod environments, this might be better inside a dir in `/opt`
 {% endif %}
-      device: {{ odoo_docker_repos_host_path }}
+      device: {{ repos_host_path }}
     name: ${COMPOSE_PROJECT_NAME}_code
   data_storage:
     name: ${COMPOSE_PROJECT_NAME}_data_storage
   odoo_data:
     name: ${COMPOSE_PROJECT_NAME}_odoo_data
+{% if mount_upstream %}
   upstream_volume:
-{% if comments %}
+{%     if comments %}
     # Odoo main code. This volume should only be needed for upstream
     # contributions.
-{% endif %}
+{%     endif %}
     driver: local
     driver_opts:
       o: bind
       type: none
-{% if comments %}
+{%     if comments %}
       # FIXME: The local paths need to exist for volumes to be mounted.
       #     For prod environments, this might be better inside a dir in `/opt`
-{% endif %}
-      device: ${ODOO_DOCKER_UPSTREAM_HOST_PATH:-${HOME}/.${COMPOSE_PROJECT_NAME}_upstream}
+{%     endif %}
+      device: {{ upstream_path }}
     name: ${COMPOSE_PROJECT_NAME}_upstream
+{% endif %}
