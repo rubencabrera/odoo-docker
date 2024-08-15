@@ -25,6 +25,13 @@ def mount_upstream_callback(ctx, param, value):
 
 @click.command()
 @click.option(
+    "--project-name",
+    default=os.environ.get("ODOO_DOCKER_PROJECT_NAME", "odoo_docker"),
+    help="Docker Compose project name, used as a base for"
+         "other defaults.",
+    prompt=True,  # make conditional if set via env var
+)
+@click.option(
     "-c",
     "--comments",
     default=True,
@@ -56,13 +63,6 @@ def mount_upstream_callback(ctx, param, value):
     " defined, you'll be prompted for a value or confirmation to use"
     " a sensible default)",
     show_default=True,
-)
-@click.option(
-    "--project-name",
-    default=os.environ.get("ODOO_DOCKER_PROJECT_NAME", "odoo_docker"),
-    help="Docker Compose project name, used as a base for"
-         "other defaults.",
-    prompt=True,  # make conditional if set via env var
 )
 @click.option(
     "-p",
@@ -106,6 +106,8 @@ def compose(
 
     # Make this a function?
     # if any(lambda x: not Path(x).is_dir(), processed_variables.keys()):
+
+    # Templating
     env = Environment(
         autoescape=select_autoescape(),
         loader=FileSystemLoader("templates"),
