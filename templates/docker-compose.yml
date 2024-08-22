@@ -18,7 +18,7 @@ services:
   db:
     environment:
 {% if comments %}
-      # DB env var needed for auto init on first run
+      # POSTGRES_DB env var needed for auto init on first run
 {% endif %}
       - POSTGRES_DB=postgres
       - POSTGRES_PASSWORD=odoo
@@ -72,7 +72,9 @@ services:
     volumes:
       - code_volume:/opt/repos
       - odoo_data:/var/lib/odoo
+{% if mount_upstream %}
       - upstream_volume:/opt/odoo
+{% endif %}
 volumes:
   code_volume:
 {% if comments %}

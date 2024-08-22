@@ -5,7 +5,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 
 def mount_upstream_callback(ctx, param, value):
-    if param and not os.environ.get("ODOO_DOCKER_UPSTREAM_HOST_PATH"):
+    if value and not os.environ.get("ODOO_DOCKER_UPSTREAM_HOST_PATH"):
         ctx.params["upstream_path"] = click.prompt(
             "Where the main odoo/OCB code will be mounted"
             " in the host",
@@ -95,7 +95,7 @@ def compose(
     project_name,
     pudb,
     repos_path,
-    upstream_path,
+    upstream_path=False,
 ):
     """Generate a docker compose yaml file to run the image built from
     this repository.
@@ -122,6 +122,6 @@ def compose(
             project_name=project_name,
             pudb=pudb,
             repos_host_path=repos_path,
-            upstream_path=upstream_path,
+            upstream_path=upstream_path,  # only relevant if mount_upstream
         )
     )
