@@ -119,6 +119,7 @@ def compose(
     pudb,
     repos_path,
     upstream_path=False,
+    compose_filename="docker-compose.yaml"
 ):
     """Generate a docker compose yaml file to run the image built from
     this repository.
@@ -136,15 +137,15 @@ def compose(
         loader=FileSystemLoader("templates"),
         trim_blocks=True,
     )
-    template = env.get_template("docker-compose.yml")
-    print(
-        template.render(
-            comments=comments,
-            db_filter=db_filter,
-            mount_upstream=mount_upstream,
-            project_name=project_name,
-            pudb=pudb,
-            repos_host_path=repos_path,
-            upstream_path=upstream_path,  # only relevant if mount_upstream
-        )
+    template = env.get_template("docker-compose.yaml")
+    output = template.render(
+        comments=comments,
+        db_filter=db_filter,
+        mount_upstream=mount_upstream,
+        project_name=project_name,
+        pudb=pudb,
+        repos_host_path=repos_path,
+        upstream_path=upstream_path,  # only relevant if mount_upstream
     )
+    with open(compose_filename, "x") as f:
+        f.write(output)
