@@ -19,6 +19,14 @@ def mount_upstream_callback(ctx, param, value):
                     ) + "_upstream"
                 ),
             ),
+            type=click.Path(
+                exists=True,
+                file_okay=False,
+                dir_okay=True,
+                writable=True,
+                readable=True,
+                allow_dash=False,
+            )
         )
     return value
 
