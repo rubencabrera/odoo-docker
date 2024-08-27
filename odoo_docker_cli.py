@@ -30,6 +30,7 @@ def mount_upstream_callback(ctx, param, value):
     help="Docker Compose project name, used as a base for"
          "other defaults.",
     prompt=True,  # make conditional if set via env var
+    type=str,
 )
 @click.option(
     "-c",
@@ -38,6 +39,7 @@ def mount_upstream_callback(ctx, param, value):
     help="Add comments to the compose file for better context and help.",
     is_flag=True,
     prompt="Leave help comments in the compose file?",
+    type=bool,
 )
 @click.option(
     "-d",
@@ -47,6 +49,7 @@ def mount_upstream_callback(ctx, param, value):
     "specific on for prod, like the %d for hostname filter.",
     prompt="db-filter to use",
     show_default=True,
+    type=str,
 )
 @click.option(
     "-o",  # as in Odoo
@@ -63,6 +66,7 @@ def mount_upstream_callback(ctx, param, value):
     " defined, you'll be prompted for a value or confirmation to use"
     " a sensible default)",
     show_default=True,
+    type=bool,
 )
 @click.option(
     "-p",
@@ -70,6 +74,7 @@ def mount_upstream_callback(ctx, param, value):
     default=True,
     help="Expose pudb port for console debugging option.",
     prompt="Expose 6899 port for pudb debugger sessions.",
+    type=bool,
 )
 @click.option(
     "--repos-path",
@@ -87,6 +92,14 @@ def mount_upstream_callback(ctx, param, value):
            " in the host." if not os.environ.get(
                "ODOO_DOCKER_REPOS_HOST_PATH"
            ) else False,
+    type=click.Path(
+        exists=True,
+        file_okay=False,
+        dir_okay=True,
+        writable=True,
+        readable=True,
+        allow_dash=False,
+    ),
 )
 def compose(
     comments,
