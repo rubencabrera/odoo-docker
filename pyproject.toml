@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+dependencies = [
+  "click==8.1.7",
+  "Jinja2==3.1.4",
+  "MarkupSafe==2.1.5",
+]
+dynamic = ["version"]
+name = "odoo_docker_cli"
+requires-python = ">= 3.10"
+
+[project.scripts]
+# odoo_docker_cli = "odoo_docker_cli:compose"
+odoo_docker_cli = "odoo_docker_cli.odoo_docker_cli:compose"
+
+[tool.setuptools.packages.find]
+where = ["cli-src/"]

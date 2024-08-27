@@ -26,20 +26,38 @@ be much better with something above 4GB.
 
 ## Generate a docker-compose file to run locally
 
-Run the `odoo-docker-cli` script and follow instructions to generate a
-`docker-compose.yaml` file.
+A convenience script named `odoo_docker_cli` is provided to generate a
+`docker-compose.yaml` file both for prod and development.
+
+### Installing the `odoo_docker_cli` tool
+
+#### Pre-reqs
+
+It's best to use [pyenv][pyenv-installer] to install this script with the
+[pyenv-virtualenv plugin][pyenv-virtualenv].
+
+#### Installation
+
+Once the virtualenv thing is sorted, just jun `pip install .`
+
+### Use the cli tool
+
+You can run `odoo_docker_cli` after installation and follow the prompts to
+get a `docker-compose.yaml` file you can then use (with `docker compose up`)
+to run this docker image with volumes for the code and data.
 
 ### Running with docker-compose
 
-1. Set the environment variables used in `docker-compose.yml` to
-configure how docker compose will behave:
-`ODOO_DOCKER_PROJECT_NAME` and `ODOO_DOCKER_REPOS_HOST_PATH`.
-1. Review other `FIXME`s in that same file (like creating or setting the path
-for your code volume).
-1. Set other environment variables in the odoo16 container for the Odoo server
-config (see section below, look at `DB_FILTER` especially for local
- development).
-1. Run `docker-compose up` in the root path.
+Some environment variables can be set before running to skip some prompts:
+`ODOO_DOCKER_PROJECT_NAME`, `ODOO_DOCKER_REPOS_HOST_PATH` and
+`ODOO_DOCKER_UPSTREAM_HOST_PATH`
+
+You can add more environment variables to the odoo container section for
+odoo specific configuration (see details below).
+
+Run `docker-compose up` after your `docker-compose.yaml` file has been created
+and navigate to `localhost:8069` (or your chosen port) to get started. On first
+run, database initialization takes a while.
 
 ### Developing using this image
 
@@ -165,3 +183,5 @@ por ayudar.
 [issue-link]: https://github.com/rubencabrera/odoo-docker/issues/new
 [compose-install]: https://docs.docker.com/compose/install/]
 [pudb]: https://documen.tician.de/pudb/index.html
+[pyenv-installer]: https://github.com/pyenv/pyenv#automatic-installer
+[pyenv-virtualenv]: https://github.com/pyenv/pyenv-virtualenv#installation
