@@ -36,6 +36,9 @@ A convenience script named `odoo_docker_cli` is provided to generate a
 It's best to use [pyenv][pyenv-installer] to install this script with the
 [pyenv-virtualenv plugin][pyenv-virtualenv].
 
+Go to the links, install `pyenv` and then `pyenv-virtualenv` plugin. Then
+create a virtual environment where you will install the tool and activate it.
+
 #### Installation
 
 Once the virtualenv thing is sorted, just jun `pip install .`
